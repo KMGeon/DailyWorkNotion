@@ -1,4 +1,4 @@
-package com.example.dailyworknotion.controller.dto;
+package com.example.dailyworknotion.controller.dto.notion;
 
 import lombok.*;
 
