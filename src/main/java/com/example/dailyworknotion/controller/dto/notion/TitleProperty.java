@@ -1,14 +1,16 @@
-package com.example.dailyworknotion.controller.dto;
+package com.example.dailyworknotion.controller.dto.notion;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class StatusDTO {
+public  class TitleProperty {
     private String id;
     private String type;
-    private StatusInfoDTO status;
+    private List<Title> title;
 }

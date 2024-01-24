@@ -1,4 +1,4 @@
-package com.example.dailyworknotion.controller.dto;
+package com.example.dailyworknotion.controller.dto.notion;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,19 +7,16 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class PageDTO {
+public  class Page {
     private String object;
     private String id;
     private String created_time;
     private String last_edited_time;
-    private UserDTO created_by;
-    private UserDTO last_edited_by;
-    private Object cover;
-    private Object icon;
-    private ParentDTO parent;
+    private User createdBy;
+    private User last_edited_by;
+    private String cover;
+    private String icon;
     private boolean archived;
-    private PropertiesDTO properties;
+    private Properties properties;
     private String url;
-    private String public_url;
-
 }

@@ -1,4 +1,4 @@
-package com.example.dailyworknotion.controller.dto;
+package com.example.dailyworknotion.controller.dto.notion;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class UserDTO {
-    private String object;
-    private String id;
+public  class Text {
+    private String content;
+    private Object link;
 }
