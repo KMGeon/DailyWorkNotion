@@ -1,5 +1,6 @@
 package com.example.dailyworknotion.domain;
 
+import com.example.dailyworknotion.validGroup.ToContentValidGroup;
 import com.example.dailyworknotion.validGroup.ToTargetValidationGroup;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -19,13 +20,10 @@ public class Member {
     @Column(nullable = false, updatable = false, length = 50)
     private final String memberKey = UUID.randomUUID().toString();
 
-    @NotNull(groups = ToTargetValidationGroup.class, message = "이메일을 입력하세요.")
     private String email;
 
-    @NotNull(groups = ToTargetValidationGroup.class, message = "출근 시간을 입력하세요.")
     private LocalDateTime officeGoHour;
 
-    @NotNull(groups = ToTargetValidationGroup.class, message = "수신여부를 선택하세요.")
     private boolean isAcceptEmail;
 
     @Builder
