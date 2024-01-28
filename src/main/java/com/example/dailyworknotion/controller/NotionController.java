@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/notion")
+@RequestMapping(value = "/api")
 public class NotionController {
 
-    private final Logger logger = LoggerFactory.getLogger(NotionController.class);
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
     private final NotionService notionService;
 
     public NotionController(NotionService notionService) {
         this.notionService = notionService;
     }
 
-    @GetMapping("/database")
+    @GetMapping("/notion")
     public ResponseEntity<NotionApiResponse> getNotionDatabase(HttpServletRequest request) {
         logger.info("[" + request.getRemoteAddr() + "] ====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] start ======");
         try {
@@ -39,8 +39,17 @@ public class NotionController {
     }
 
     @PostMapping(value = "/save")
-    public ResponseEntity<Void> saveNotion() {
+    public ResponseEntity<Void> saveNotion(HttpServletRequest request) {
+        logger.info("[" + request.getRemoteAddr() + "] ====== /notion/saveNotion [" + getClass().getSimpleName() + ".saveNotion()] start ======");
+        try {
+            NotionApiResponse responseDTO = notionService.getNotionDatabase(request);
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        } catch (JsonProcessingException e) {
+            logger.error("DTO 매핑에 실패를 하였습니다", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        } finally {
+            logger.info("[" + request.getRemoteAddr() + "] ====== /notion/saveNotion [" + getClass().getSimpleName() + ".saveNotion()] end ======");
+        }
+        return null;
     }
 }

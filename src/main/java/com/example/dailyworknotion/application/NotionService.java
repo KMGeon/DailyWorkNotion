@@ -23,6 +23,7 @@ import java.util.Collections;
 @Service
 public class NotionService {
 
+
     @Value("${notion.secret}")
     private String NOTION_SECRET;
 
@@ -32,7 +33,7 @@ public class NotionService {
     @Value("${notion.db.id}")
     private String NOTION_DB_ID;
 
-    private final Logger logger = LoggerFactory.getLogger(NotionService.class);
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     private final RestTemplate restTemplate;
     private final ObjectMapper objectMapper;
