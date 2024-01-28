@@ -1,33 +1,34 @@
-package com.example.dailyworknotion.controller.dto.member;
+package com.example.dailyworknotion.controller.dto.member.request;
 
 import com.example.dailyworknotion.domain.Member;
-import com.example.dailyworknotion.validGroup.ToContentValidGroup;
+import com.example.dailyworknotion.controller.dto.validGroup.ToContentValidGroup;
+import com.example.dailyworknotion.controller.dto.validGroup.ToTargetValidationGroup;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import lombok.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
-@Data
+@Getter
 public class MemberRequest {
 
-    @NotNull(groups = ToContentValidGroup.class, message = "아이디를 입력하세요.")
+    @NotNull(groups = {ToTargetValidationGroup.class}, message = "아이디를 입력하세요.")
     private Long id;
 
-    @NotNull(groups = ToContentValidGroup.class, message = "이메일을 입력하세요.")
+    @NotNull(groups = {ToTargetValidationGroup.class, ToContentValidGroup.class}, message = "이메일을 입력하세요.")
     private String email;
 
     @NotNull(groups = ToContentValidGroup.class, message = "수신여부를 선택하세요.")
     private boolean isAcceptEmail;
 
+    @DateTimeFormat(pattern = "HH:mm")
     @NotNull(groups = ToContentValidGroup.class, message = "출근 시간을 입력하세요.")
-    private LocalDateTime goOfficeHour;
+    private LocalTime goOfficeHour;
 
 
     public Member toTarget() {
         return Member.builder()
-                .id(id)
                 .email(email)
-                .isAcceptEmail(isAcceptEmail)
                 .build();
     }
     public Member toContent() {
