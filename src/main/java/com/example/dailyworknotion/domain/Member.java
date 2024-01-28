@@ -1,12 +1,12 @@
 package com.example.dailyworknotion.domain;
 
-import com.example.dailyworknotion.validGroup.ToContentValidGroup;
-import com.example.dailyworknotion.validGroup.ToTargetValidationGroup;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.UUID;
 
 @Entity
@@ -22,12 +22,12 @@ public class Member {
 
     private String email;
 
-    private LocalDateTime officeGoHour;
+    private LocalTime officeGoHour;
 
     private boolean isAcceptEmail;
 
     @Builder
-    public Member(Long id, String email, LocalDateTime officeGoHour, boolean isAcceptEmail) {
+    public Member(Long id, String email, LocalTime officeGoHour, boolean isAcceptEmail) {
         this.id = id;
         this.email = email;
         this.officeGoHour = officeGoHour;
