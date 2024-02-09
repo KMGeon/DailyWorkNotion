@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/notion-api" />
+            <option value="$PROJECT_DIR$/notion-batch" />
             <option value="$PROJECT_DIR$/notion-core" />
           </set>
         </option>
@@ -19,6 +20,18 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/notion-api" />
+            <option value="$PROJECT_DIR$/notion-batch" />
+            <option value="$PROJECT_DIR$/notion-core" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/notion-batch" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/notion-api" />
+            <option value="$PROJECT_DIR$/notion-batch" />
             <option value="$PROJECT_DIR$/notion-core" />
           </set>
         </option>
