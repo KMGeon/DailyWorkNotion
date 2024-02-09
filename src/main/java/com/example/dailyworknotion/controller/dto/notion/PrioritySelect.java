@@ -15,11 +15,4 @@ public class PrioritySelect {
     private String type;
     @JsonProperty("select")
     private Select select;
-
-//    @JsonProperty("people")
-//    private People people;
-//
-//    @JsonProperty("date")
-//    private PriorityDate priorityDate;
-
 }

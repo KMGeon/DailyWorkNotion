@@ -16,7 +16,7 @@ public class ApiResponse<T> {
     private T data;
 
     public static <T> ApiResponse<T> success(HttpStatus code, T data){
-        return new ApiResponse<>(code, "", data);
+        return new ApiResponse<>(code, "success", data);
     }
 
 
