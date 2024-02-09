@@ -2,4 +2,4 @@ rootProject.name = 'DailyWorkNotion'
 
 include 'notion-api'
 include 'notion-core'
-//include 'module-batch'
+include 'notion-batch'
