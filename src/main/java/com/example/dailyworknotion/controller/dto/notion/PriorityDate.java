@@ -1,15 +1,19 @@
 package com.example.dailyworknotion.controller.dto.notion;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Getter@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public  class User {
-    private String object;
+public class PriorityDate {
     private String id;
+    private String type;
+
+    @JsonProperty("date")
+    private PropertiesDate propertiesDates;
+
 }

@@ -9,9 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public  class Title {
-    private Text text;
-    private Annotations annotations;
-    private String plain_text;
-    private String href;
+public class PropertiesDate {
+    private String start;
+    private String end;
+    private String time_zone;
 }

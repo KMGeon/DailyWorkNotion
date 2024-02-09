@@ -64,4 +64,17 @@ class MemberServiceTest extends ContextTest {
                 .isInstanceOf(DuplicateEmail.class)
                 .hasMessage("==== [MemberService] ===== mugeon@test.com 이메일이 중복이 되었습니다.");
     }
+
+    @Test
+    @DisplayName("회원가입 실패")
+    void shouldSignupFailWhenRequestEmpty() throws Exception {
+        //given
+
+        //when
+        assertThatThrownBy(()-> memberService.signUp(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessage("Cannot invoke \"com.example.dailyworknotion.domain.Member.getEmail()\" because \"member\" is null");
+        //then
+    }
+
 }

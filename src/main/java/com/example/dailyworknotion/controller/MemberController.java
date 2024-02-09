@@ -4,9 +4,8 @@ import com.example.dailyworknotion.ApiResponse;
 import com.example.dailyworknotion.application.MemberService;
 import com.example.dailyworknotion.controller.dto.member.request.MemberRequest;
 import com.example.dailyworknotion.controller.dto.member.response.MemberResponse;
-import com.example.dailyworknotion.domain.Member;
 import com.example.dailyworknotion.controller.dto.validGroup.ToContentValidGroup;
-import jakarta.servlet.http.HttpServletRequest;
+import com.example.dailyworknotion.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,20 +25,22 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("signUp")
-    public ApiResponse<MemberResponse> signUpMember(@Validated(ToContentValidGroup.class) @RequestBody MemberRequest memberRequest,
-                                            HttpServletRequest request) {
+    public ApiResponse<MemberResponse> signUpMember(
+            @Validated(ToContentValidGroup.class)
+            @RequestBody MemberRequest memberRequest) {
 
-        logger.info("[" + request.getRemoteAddr() + "] ====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] start ======");
+        logger.info("====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] start ======");
 
-        logger.info("[{}] ====== /notion/database [{}.email : {}]", request.getRemoteAddr(), getClass().getSimpleName(), memberRequest.getEmail());
-        logger.info("[{}] ====== /notion/database [{}.goOfficeHour : {}]", request.getRemoteAddr(), getClass().getSimpleName(), memberRequest.getGoOfficeHour());
-        logger.info("[{}] ====== /notion/database [{}.isAcceptEmail : {}]", request.getRemoteAddr(), getClass().getSimpleName(), memberRequest.isAcceptEmail());
+        logger.info("[{}] ====== /notion/database [email : {}]", getClass().getSimpleName(), memberRequest.getEmail());
+        logger.info("[{}] ====== /notion/database [goOfficeHour : {}]", getClass().getSimpleName(), memberRequest.getGoOfficeHour());
+        logger.info("[{}] ====== /notion/database [isAcceptEmail : {}]", getClass().getSimpleName(), memberRequest.isAcceptEmail());
 
         Member contentMember = memberRequest.toContent();
         MemberResponse memberResponse = memberService.signUp(contentMember);
 
-        logger.info("[" + request.getRemoteAddr() + "] ====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] end ======");
+        logger.info("====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] end ======");
         return ApiResponse.success(HttpStatus.CREATED, memberResponse);
+
     }
 
 }

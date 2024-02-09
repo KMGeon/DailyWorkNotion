@@ -2,6 +2,7 @@ package com.example.dailyworknotion.controller;
 
 import com.example.dailyworknotion.exception.ErrorResponse;
 import com.example.dailyworknotion.exception.MemberAbstractException;
+import com.example.dailyworknotion.exception.NotionApiException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -49,4 +50,17 @@ public class ExceptionControllerAdvice {
         return response;
     }
 
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(NotionApiException.class)
+    public ErrorResponse NotionApiException(NotionApiException e) {
+        ErrorResponse response = ErrorResponse.builder()
+                .code(HttpStatus.INTERNAL_SERVER_ERROR.toString())
+                .message(e.getMessage())
+                .build();
+
+        logger.warn("Notion api exception" + e);
+
+        return response;
+    }
 }
