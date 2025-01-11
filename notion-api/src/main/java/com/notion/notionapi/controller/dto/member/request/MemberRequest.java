@@ -1,7 +1,7 @@
 package com.notion.notionapi.controller.dto.member.request;
 
-import com.notion.notionapi.controller.dto.validGroup.ToContentValidGroup;
-import com.notion.notionapi.controller.dto.validGroup.ToTargetValidationGroup;
+import com.notion.notionapi.validator.ToContentValidGroup;
+import com.notion.notionapi.validator.ToTargetValidationGroup;
 import com.notion.notioncore.domain.Member;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

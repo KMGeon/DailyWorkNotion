@@ -31,12 +31,19 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
+    //aws
+    implementation 'io.awspring.cloud:spring-cloud-aws-ses:3.0.3'
+    implementation 'io.awspring.cloud:spring-cloud-starter-aws-secrets-manager-config:2.4.4'
+
+    // gson
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.9.0'
+
     //multi module
     implementation project(':notion-core')
 }
 
-tasks.named('test') {
+
+tasks.test {
     useJUnitPlatform()
 }
-
 tasks.register("prepareKotlinBuildScriptModel") {}
