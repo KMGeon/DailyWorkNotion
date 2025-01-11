@@ -4,7 +4,7 @@ import com.notion.notionapi.ApiResponse;
 import com.notion.notionapi.application.MemberService;
 import com.notion.notionapi.controller.dto.member.request.MemberRequest;
 import com.notion.notionapi.controller.dto.member.response.MemberResponse;
-import com.notion.notionapi.controller.dto.validGroup.ToContentValidGroup;
+import com.notion.notionapi.validator.ToContentValidGroup;
 import com.notion.notioncore.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -29,7 +29,7 @@ public class MemberController {
             @Validated(ToContentValidGroup.class)
             @RequestBody MemberRequest memberRequest) {
 
-        logger.info("====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] start ======");
+        logger.info("====== /notion/database [{}.getNotionDatabase()] start ======", getClass().getSimpleName());
 
         logger.info("[{}] ====== /notion/database [email : {}]", getClass().getSimpleName(), memberRequest.getEmail());
         logger.info("[{}] ====== /notion/database [goOfficeHour : {}]", getClass().getSimpleName(), memberRequest.getGoOfficeHour());
@@ -38,7 +38,7 @@ public class MemberController {
         Member contentMember = memberRequest.toContent();
         MemberResponse memberResponse = memberService.signUp(contentMember);
 
-        logger.info("====== /notion/database [" + getClass().getSimpleName() + ".getNotionDatabase()] end ======");
+        logger.info("====== /notion/database [{}.getNotionDatabase()] end ======", getClass().getSimpleName());
         return ApiResponse.success(HttpStatus.CREATED, memberResponse);
 
     }

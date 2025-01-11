@@ -35,7 +35,7 @@ public class NotionService {
     @Value("${notion.version}")
     private String NOTION_VERSION_VALUE;
 
-    @Value("${notion.db.id}")
+    @Value("${notion.dbId}")
     private String NOTION_DB_ID;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
@@ -91,7 +91,7 @@ public class NotionService {
      */
     @Transactional
     public void saveNotionTask() {
-        logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] Start ====== ");
+        logger.info("====== /api/notion [{}.saveNotionTask()] Start ====== ", getClass().getSimpleName());
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
@@ -99,7 +99,7 @@ public class NotionService {
 
         String notionRequestId = notionTaskResponse.getRequest_id();
 
-        logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] NotionRequestId : {}", notionRequestId);
+        logger.info("====== /api/notion [{}.saveNotionTask()] NotionRequestId : {}", getClass().getSimpleName(), notionRequestId);
 
         notionTaskResponse.getResults()
                 .forEach(page -> {
@@ -127,15 +127,15 @@ public class NotionService {
                             .map(Title::getText)
                             .toList();
 
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] priorityName : {}", priorityName);
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] categoryName : {}", categoryName);
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] statusName : {}", statusName);
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] requestStart : {}", requestStart);
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] deadLine : {}", deadLine);
+                    logger.info("====== /api/notion [{}.saveNotionTask()] priorityName : {}", getClass().getSimpleName(), priorityName);
+                    logger.info("====== /api/notion [{}.saveNotionTask()] categoryName : {}", getClass().getSimpleName(), categoryName);
+                    logger.info("====== /api/notion [{}.saveNotionTask()] statusName : {}", getClass().getSimpleName(), statusName);
+                    logger.info("====== /api/notion [{}.saveNotionTask()] requestStart : {}", getClass().getSimpleName(), requestStart);
+                    logger.info("====== /api/notion [{}.saveNotionTask()] deadLine : {}", getClass().getSimpleName(), deadLine);
 
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] processingPeople : {}", processingPeople.toString());
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] requestPeople : {}", requestPeople.toString());
-                    logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] notionTaskTitle : {}", notionTaskTitle);
+                    logger.info("====== /api/notion [{}.saveNotionTask()] processingPeople : {}", getClass().getSimpleName(), processingPeople.toString());
+                    logger.info("====== /api/notion [{}.saveNotionTask()] requestPeople : {}", getClass().getSimpleName(), requestPeople.toString());
+                    logger.info("====== /api/notion [{}.saveNotionTask()] notionTaskTitle : {}", getClass().getSimpleName(), notionTaskTitle);
 
                     IntStream.range(0, notionTaskTitle.size()).forEach(i -> {
                         Notion notion = Notion.builder()
@@ -155,6 +155,6 @@ public class NotionService {
                         notionRepository.save(notion);
                     });
                 });
-        logger.info("====== /api/notion [" + getClass().getSimpleName() + ".saveNotionTask()] End ====== ");
+        logger.info("====== /api/notion [{}.saveNotionTask()] End ====== ", getClass().getSimpleName());
     }
 }

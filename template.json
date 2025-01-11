@@ -1,0 +1,7 @@
+{
+  "Template": {
+    "TemplateName": "notion-template-email",
+    "SubjectPart": "회원 가입을 축하합니다!!",
+    "HtmlPart": "<html><body>안녕</body></html>"
+  }
+}
